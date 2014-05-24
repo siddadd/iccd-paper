@@ -1,13 +1,25 @@
 %Architecture
 In this section we describe in detail the system architecture, in particular the memory hierarchies along with the data mapping and refresh policies that we adopt.
 
-Figure~\ref{fig:picasso} shows the complete PICASSO architecture.
+Figure~\ref{fig:reva} shows the complete PICASSO architecture.
 
-\begin{figure}[ht!]
+\begin{figure*}[ht!]
+\begin{minipage}[b]{0.33\linewidth}
+\raggedleft
+\epsfig{file=figs/baseline_arch.eps, angle=0, width=1\linewidth, clip=}
+\caption{\label{fig:reva}a) Architecture of Proposed System}
+\end{minipage}
+\begin{minipage}[b]{0.35\linewidth}
 \centering
-\epsfig{file=figs/crossover_new.eps, angle=0, height=0.6\linewidth, clip=}
-\caption{\label{fig:picasso} Architecture of Proposed System}
-\end{figure}
+\epsfig{file=figs/reva_arch.eps, angle=0, width=0.95\linewidth, clip=}
+\caption{\label{fig:reva}b) Architecture of Proposed System}
+\end{minipage}
+\begin{minipage}[b]{0.3\linewidth}
+\raggedright
+\epsfig{file=figs/refresh_circuitry.eps, angle=0, width=0.95\linewidth, clip=}
+\caption{\label{fig:reva}c) Architecture of Proposed System}
+\end{minipage}
+\end{figure*}
 
 \subsection{Differential Refresh Architecture}
 As explained above, in the time duration of Refresh Cycle Time ($T_{RFC}$), a group of rows is refreshed sequentially when a refresh pulse is scheduled. A refresh pulse is sent every Refresh Interval ($T_{ref}$) time period.  When a refresh is scheduled, we keep track of the next row to be refreshed in a bank in the Next\_Row\_Address register. At the end of every refresh iteration, the content of this register is sent to the memory controller. At the memory controller, we maintain a CAM structure, RoI Address Table (RAT) to list Regions of Interest in each frame and their corresponding starting addresses. When the address of the next row to be refreshed does not match an RoI address on associative search, Refresh Enable signal is set to 0. This ensures that rows of an image in a bank that do not belong to RoIs are refreshed less frequently than the rows that contain Regions of Interest. We propose two schemes to support differential Refresh rates across different sections of an image. 
