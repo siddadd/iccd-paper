@@ -1,0 +1,8 @@
+%Accelerator Background
+In this section, we provide a brief overview on the vision-based accelerators used in our system. 
+
+\subsection{Saliency Detection Accelerator}
+Visual attention has gained a lot of traction in computational neuroscience research over the past few years. Various computational models~\cite{Itti1998,Itti2001,Bruce2009a} have used low-level features to build information maps which are then fused together to form what is popularly called as a saliency map. Given an image to observe, this saliency map in essence provides a compact representation in terms of what is most important in the image. 
+Our goal here is to localize objects in a scene and such a bottom-up saliency map proves to be a very useful in a cognitive real-time system.
+
+We use Itti's model~\cite{Peters2007} of saliency which serves as a backend to the entire cognitive pipeline. The model consists of a preprocessing Retina model, which takes the three color channels of the input image and produces luminance (I) and chrominance (RG, BY) components. These are then passed to a Visual Cortex model where the RG and BY channels are processed to produce the color (C) conspicuity map. The I channel is used to produce Intensity (I) conspicuity map and four Orientation (O) maps. The I channel from two consecutive image frames is used to produce the Flicker (F) conspicuity map and four Motion (M) maps. These 12 conspicuity maps are then combined to form what is called a saliency map. 
