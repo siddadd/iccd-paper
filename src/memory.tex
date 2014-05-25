@@ -6,11 +6,31 @@ In this section, we briefly describe the role that memory design has to play in 
 Memory is an important component of almost all computer-based systems. Given the increase in cloud-computing and server farms, the scalability in terms of power and performance of memory devices has become an important design consideration. Due to it's low-cost per bit, the dynamic random-access memory (DRAM) has become ubiquitous in most commercial applications. However as densities increase, the power wall is becoming an increasingly severe problem. Figure~\ref{fig:refreshTrends} shows the increasing power consumption across different DRAM densities. More crucially, the refresh component in the DRAM is becoming a major source of concern. 
 Considerable work has gone into the area of reducing refresh power consumptions. Some have used scheduling policies~\cite{Stuecheli2010}, some have used retention profiling~\cite{Liu2012}, while others have used software techniques~\cite{Liu2012}. In~\cite{Nair2013}, the authors use a refresh pausing mechanism to exploit idle cycles in memory. In~\cite{Mukundan2013}, Fine Grained Refresh (FGR) for DDR4 DRAM systems is analyzed.  
 
-\begin{figure}[ht!]
-\centering
+%\begin{figure}[ht!]
+%\centering
+%\epsfig{file=figs/RefreshTrends.eps, angle=0, width=1\linewidth, clip=}
+%\caption{\label{fig:refreshTrends} Trends in the distribution of DRAM power- The refresh component increases with each generation.}
+%\end{figure}
+
+\begin{figure*}[ht!]
+\begin{minipage}[b]{0.36\linewidth}
+\raggedleft
 \epsfig{file=figs/RefreshTrends.eps, angle=0, width=1\linewidth, clip=}
-\caption{\label{fig:refreshTrends} Trends in the distribution of DRAM power- The refresh component increases with each generation.}
-\end{figure}
+\caption{\label{fig:refreshTrends}a) Trends in the distribution of DRAM power- The refresh component increases with each generation.}
+\end{minipage}
+\addtocounter{figure}{-1}
+\begin{minipage}[b]{0.37\linewidth}
+\centering
+\epsfig{file=figs/DRAMEnergy_Kernels.eps, angle=0, width=1\linewidth, clip=}
+\caption{\label{fig:refreshTrends}b) Refresh energy distribution in Kernel computations}
+\end{minipage}
+\addtocounter{figure}{-1}
+%\begin{minipage}[b]{0.25\linewidth}
+%\raggedright
+%\epsfig{file=figs/refresh_circuitry.eps, angle=0, width=1\linewidth, clip=}
+%\caption{\label{fig:reva}c) Design of REVA block}
+%\end{minipage}
+\end{figure*}
 
 \subsection{DRAM Memory Organization}
 
