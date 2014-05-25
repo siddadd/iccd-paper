@@ -12,7 +12,6 @@ $(PAPER).pdf: $(TEX) $(BIB) $(FIGS)
 	latex $(PAPER)
 	latex $(PAPER)
 	dvipdf $(PAPER).dvi
-	chmod -R 777 *
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out $(PAPER).pdf
