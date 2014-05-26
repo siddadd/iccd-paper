@@ -1,8 +1,20 @@
 %Results
+\subsection{Experimental Infrastructure}
+Figure~\ref{fig:experimental-setup} shows the infrastructure setup we used to carry out our evaluations.
+We used DRAMSim2~\cite{DRAMsim2}, a cycle accurate memory simulation tool, which we customized to incorporate our refresh mechanisms. 
+The input traces to DRAMSim2 were generated using the Xilinx Vivado (cite) environment in the following manner.
+The different accelerators, namely saliency, object recognitoin and action recognition, were implemented in Verilog and their output was used to generate parameters which was fed to a traffic generator.
+This traffic generator outputted the memory trace comprising of read and write memory accesses.
+
+\begin{figure}[ht!]
+\centering
+\epsfig{file=figs/experimental_setup.eps, angle=0, width=0.8\linewidth, clip=}
+\caption{\label{fig:experimental-setup} Infrastructure setup.}
+\end{figure}
 
 
 \begin{figure}[ht!]
 \centering
-\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=1\linewidth, clip=}
+\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.9\linewidth, clip=}
 \caption{\label{fig:ActionRecogntion} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
 \end{figure}
