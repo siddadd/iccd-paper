@@ -43,11 +43,12 @@ This scheme involves communication overhead between memory controller and the re
 
 \subsection{Comparison with existing schemes}
 Selectively refreshing the DRAM depending on data criticality has been demonstrated earlier in~\cite{Liu2011}. However, unlike their scheme which consists of a static partitioning of the memory depending on the required refresh rate, our system is capable of dynamically allocating refresh periods to stripes of rows across banks. Consequently, by interleaving data across all banks, it is possible to control the refresh rates of each individual RoI. 
+This also eliminates the need for the refresh regions to be re-written into a separate section of pre-allocated memory, as in the case of~\cite{Liu2011}.
 
-Figure~\ref{fig:reva-refresh} contrasts the two schemes described above.
+Figure~\ref{fig:reva-refresh} contrasts the two schemes described above. It can be observed that our scheme makes dynamic refresh allocation, which lends more flexibility and also reduces the need for redundant writes of the RoI.
 
 \begin{figure}[ht!]
 \centering
-\epsfig{file=figs/reva_refresh.eps, angle=0, width=0.9\linewidth, clip=}
-\caption{\label{fig:reva-refresh} }
+\epsfig{file=figs/reva_refresh.eps, angle=0, width=1\linewidth, clip=}
+\caption{\label{fig:reva-refresh} a) Refresh mechanism in Flikker  b) Refresh mechanism in our proposed scheme (REVA)}
 \end{figure}
