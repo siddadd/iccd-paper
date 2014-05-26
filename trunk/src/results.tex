@@ -12,9 +12,18 @@ This traffic generator outputted the memory trace comprising of read and write m
 \caption{\label{fig:experimental-setup} Infrastructure setup.}
 \end{figure}
 
+\subsection{Sensitivity Analysis}
+As shown in Figure~\ref{fig:ActionRecognitionAnalysis}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10 percent).  
 
 \begin{figure}[ht!]
 \centering
 \epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.9\linewidth, clip=}
 \caption{\label{fig:ActionRecogntion} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
 \end{figure}
+
+\begin{figure}[ht!]
+\centering
+\epsfig{file=figs/DRAMPower_Improvement_8GB.eps, angle=0, width=0.9\linewidth, clip=}
+\caption{\label{fig:PowerResults} Power comparisons for different schemes.}
+\end{figure}
+
