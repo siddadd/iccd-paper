@@ -2,7 +2,7 @@
 \subsection{Experimental Infrastructure}
 Figure~\ref{fig:experimental-setup} shows the infrastructure setup we used to carry out our evaluations.
 We used DRAMSim2~\cite{DRAMsim2}, a cycle accurate memory simulation tool, which we customized to incorporate our refresh mechanisms. 
-The input traces to DRAMSim2 were generated using the Xilinx Vivado (cite) environment in the following manner.
+The input traces to DRAMSim2 were generated using the Xilinx Vivado~\cite{vivado} environment in the following manner.
 The different accelerators, namely saliency, object recognitoin and action recognition, were implemented in Verilog and their output was used to generate parameters which was fed to a traffic generator.
 This traffic generator outputted the memory trace comprising of read and write memory accesses.
 
