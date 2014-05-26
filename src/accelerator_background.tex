@@ -13,6 +13,11 @@ Simple cells in the primary visual cortex are believed to extract local contour 
 
 We use the minimal HMAX implementation (hmin) which consists of two S (simple) layers and two C (complex) layers. The S layers (S1 and S2) perform template matching while the C layers (C1 and C2) perform max pooling. A feature vector is generate from this hierarchical model which is then passed through a classifier to classify the object. For a more detailed description of the model, we refer the reader to~\cite{Mutch2008}.
 
+\subsection{Action Recognition Accelerator}
+The visual cortex is considered to have two streams: the ventral pathway that is concerned with object identification and recognition and the dorsal pathway that is involved with understanding the object's motion information. HMAX was initially modeled to mimic the ventral stream. In ~\cite{action-recognition}, it is extended to include the dorsal stream as well, so as to classify temporal information such as human actions. Computationally, this is done by integrating spatio-temporal detectors into S1, while adding two additional layers, S3 (template matching) and C3 (pooling), which track features over time, providing time invariance to the model.
+
+In terms of scene understanding and video analytics, action recognition can play a very critical role. For example, in a retail environment, knowing customer behaviour can play a big role in reorganization of products. 
+
 \begin{figure}[ht!]
 \centering
 \epsfig{file=figs/RoIs_campus_000042.eps, angle=0, width=1\linewidth, clip=}
