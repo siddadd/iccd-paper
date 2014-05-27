@@ -16,7 +16,7 @@ This traffic generator outputted the memory trace comprising of read and write m
 While it can be argued that in a purely streaming embedded system, one can completely turn off refresh, we provide a compelling reason to have a variable dynamic refresh mechanism in place. There can be instances when a burst of RoIs are generated and the object recognition accelerator cannot sustain a high throughput of generating class labels. RoIs need to be buffered in the DRAM for processing at a later stage. Similarly, an object classified by HMAX may need to be evaluated further by SIFT for object matching or sub-class recognition. Then too the object needs to be stored for a period longer than the regular DRAM refresh interval. Lastly in a multi-object scenario, if a person's action is being recognized, another classified person's actions need to be buffered so as to process at a later stage. As shown in Figure~\ref{fig:ActionRecognition}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10 percent).  
 
 \subsection{Results}
-Figure~\ref{fig:PowerResults} illustrates the total power consumption evaluated by feeding the traces generated from Vivado into DRAMSim2. We evaluate our scheme versus our best attempt at modeling Flikker in the given simulator. It should be noted here that when an action recognition task is triggered, a Flikker mechanism would require additional writes to move the RoIs from Non-Critical to Critical section since the action recognition would entail a 2 second video segment computation. REVA on the other hand would be dynamically capable of changing the refresh value in the RAT table, thus avoiding additional writes. We also show results when we turn refresh completely off. 
+Figure~\ref{fig:PowerResults} illustrates the total power consumption evaluated by feeding the traces generated from Vivado into DRAMSim2 for a 8 Gb based DRAM. We evaluate our scheme versus our best attempt at modeling Flikker in the given simulator. It should be noted here that when an action recognition task is triggered, a Flikker mechanism would require additional writes to move the RoIs from Non-Critical to Critical section since the action recognition would entail a 2 second video segment computation. REVA on the other hand would be dynamically capable of changing the refresh value in the RAT, thus avoiding additional writes. We also show results when we turn refresh completely off. 
 
 \begin{figure}[ht!]
 \centering
@@ -27,6 +27,6 @@ Figure~\ref{fig:PowerResults} illustrates the total power consumption evaluated 
 \begin{figure}[ht!]
 \centering
 \epsfig{file=figs/DRAMPower_Improvement_8GB.eps, angle=0, width=0.9\linewidth, clip=}
-\caption{\label{fig:PowerResults} Power comparisons for different schemes.}
+\caption{\label{fig:PowerResults} Power comparisons for different schemes evaluated using DRAMSim2 for a 8 Gb based DRAM.}
 \end{figure}
 
