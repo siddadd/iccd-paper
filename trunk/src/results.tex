@@ -15,6 +15,9 @@ This traffic generator outputted the memory trace comprising of read and write m
 \subsection{Sensitivity Analysis}
 As shown in Figure~\ref{fig:ActionRecognition}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10 percent).  
 
+\subsection{Results}
+Figure~\ref{fig:PowerResults} illustrates the total power consumption evaluated by feeding the traces generated from Vivado into DRAMSim2. We evaluate our scheme versus our best attempt at modeling Flikker in the given simulator. We also show results when we turn refresh completely off. 
+
 \begin{figure}[ht!]
 \centering
 \epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.9\linewidth, clip=}
