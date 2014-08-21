@@ -3,12 +3,12 @@
 Figure~\ref{fig:experimental-setup} shows the infrastructure setup we used to carry out our evaluations.
 We used DRAMSim2~\cite{DRAMsim2}, a cycle accurate memory simulation tool, which we customized to incorporate our refresh mechanisms. 
 The input traces to DRAMSim2 were generated using the Xilinx Vivado~\cite{vivado} environment in the following manner.
-The different accelerators, namely saliency, object recognitoin and action recognition, were implemented in Verilog and their output was used to generate parameters which was fed to a traffic generator.
+The different accelerators, namely saliency, object recognition and action recognition, were implemented in Verilog and their output was used to generate parameters which was fed to a traffic generator.
 This traffic generator outputted the memory trace comprising of read and write memory accesses.
 
 \begin{figure}[ht!]
 \centering
-\epsfig{file=figs/experimental_setup.eps, angle=0, width=0.8\linewidth, clip=}
+\epsfig{file=figs/experimental_setup.eps, angle=0, height=0.5\linewidth, width=0.85\linewidth, clip=}
 \caption{\label{fig:experimental-setup} Infrastructure setup}
 \end{figure}
 
@@ -30,8 +30,9 @@ Current & $I_{DD0}=110$, $I_{DD1}=135$, $I_{DD2P}=40=I_{DD2Q}$ \\
 parameters (mA) & $I_{DD2N}=42$, $I_{DD3N}=45$, $I_{DD4W}=280$ \\ 
 &$I_{DD4N}=270$, $I_{DD5}=215$, $I_{DD6}=12$ \\\hline
 \end{tabular}
-\vspace{0.1in}
+%\vspace{0.1in}
 \caption {DRAM parameters}
+\vspace{-0.2in}
 \label{tab:dram-parameters}
 \end{table}
 
@@ -43,8 +44,9 @@ The maximum possible improvement would occur when we turn refresh completely off
 
 \begin{figure}[ht!]
 \centering
-\epsfig{file=figs/DRAMPower_Improvement_8GB_2.eps, angle=0, width=0.9\linewidth, clip=true trim=}
+\epsfig{file=figs/DRAMPower_Improvement_8GB_2.eps, angle=0, height=0.5\linewidth, width=0.9\linewidth, clip=true trim=}
 \caption{\label{fig:PowerResults} Power comparisons for different schemes.}
+\vspace{-0.2in}
 \end{figure}
 
 \subsection{Sensitivity Analysis}
@@ -52,8 +54,9 @@ While it can be argued that in a purely streaming embedded system, one can compl
 
 \begin{figure}[ht!]
 \centering
-\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.9\linewidth, clip=}
+\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.85\linewidth, clip=}
 \caption{\label{fig:ActionRecognition} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
+\vspace{-0.2in}
 \end{figure}
 
 
