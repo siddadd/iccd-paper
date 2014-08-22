@@ -64,11 +64,5 @@ The maximum possible improvement would occur when we turn refresh completely off
 \subsection{Sensitivity Analysis}
 While it can be argued that in a purely streaming embedded system, one can completely turn off refresh, we provide a compelling reason to have a variable dynamic refresh mechanism in place. There can be instances when a burst of RoIs are generated and the HMAX accelerator cannot sustain a high throughput of generating class labels. RoIs need to be buffered in the DRAM for processing at a later stage. Similarly, an object classified by HMAX may need to be evaluated further by SIFT for object matching. Lastly in a multi-object scenario, if a person's action is being recognized, another person's actions need to be buffered so as to process at a later stage. As shown in Figure~\ref{fig:ActionRecognition}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10\%).  
 
-%\begin{figure}[ht!]
-%\centering
-%\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.85\linewidth, clip=}
-%\caption{\label{fig:ActionRecognition} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
-%\vspace{-0.2in}
-%\end{figure}
 
 
