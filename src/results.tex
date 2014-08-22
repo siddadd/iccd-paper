@@ -1,10 +1,10 @@
 %Results
 \subsection{Experimental Infrastructure}
 Figure~\ref{fig:experimental-setup} shows the infrastructure setup we used to carry out our evaluations.
-We used DRAMSim2~\cite{DRAMsim2}, a cycle accurate memory simulation tool, which we customized to incorporate our refresh mechanisms. 
+We used DRAMSim2~\cite{DRAMsim2}, which we customized to incorporate our refresh mechanisms. 
 The input traces to DRAMSim2 were generated using Xilinx Vivado~\cite{vivado} in the following manner.
-The different accelerators, namely saliency, object recognition and action recognition, were modelled in Verilog and their output was used to generate parameters which was fed to a traffic generator.
-This traffic generator outputted the memory trace comprising of read and write memory accesses. Table~\ref{tab:dram-parameters} shows the parameters used in our DRAM model, which we configured for simulation using DRAMSim2.
+The different accelerators, namely saliency, object and action recognition were modelled in Verilog and their output was used to generate parameters which were fed to a traffic generator.
+This traffic generator outputs the memory trace comprising of read and write memory accesses. Table~\ref{tab:dram-parameters} shows the parameters used in our DRAM model, which we configured for simulation using DRAMSim2.
 
 \begin{figure}[ht!]
 \centering
@@ -34,26 +34,41 @@ parameters (mA) & $I_{DD2N}=42$, $I_{DD3N}=45$, $I_{DD4W}=280$ \\
 \end{table}
 
 \subsection{Results}
-Figure~\ref{fig:PowerResults} illustrates the total power consumption evaluated by feeding the traces generated from Vivado into DRAMSim2 for a 8 Gb based DRAM. We evaluate our scheme versus different baseline and state-of-the-art schemes. These include a completely refreshless system, \emph{Off}, a state-of-the-art refresh-aware scheme like \emph{Flikker} and a default mobile DRAM-based auto-refresh scheme (\emph{Baseline}). %It should be noted here that when an action recognition task is triggered, a Flikker mechanism would require additional writes to move the RoIs from Non-Critical to Critical section since the action recognition would entail a 2 second video segment computation. 
-The REVA architecture is dynamically capable of changing the refresh value of an RoI, by simply modifying the refresh period in the corresponding RAT entry, thus avoiding any additional writes that would be needed to re-write the RoI into a frequently refreshed memory. In contrast, in accordance with its treatment of media-related data, Flikker places all the frames in a low refresh window. While the accuracy of tasks like object recognition are relatively unaffected by this, tasks like action recognition require a high degree of accuracy while recording frame-to-frame differences. 
+Figure~\ref{fig:PowerResults} shows the total power consumption evaluated by feeding the traces generated from Vivado into DRAMSim2 for a 8 Gb DRAM. We evaluate our scheme versus different baseline and state-of-the-art schemes. These include a completely refreshless system, \emph{Off}, a state-of-the-art refresh-aware scheme like \emph{Flikker} and a default mobile DRAM-based auto-refresh scheme (\emph{Baseline}). %It should be noted here that when an action recognition task is triggered, a Flikker mechanism would require additional writes to move the RoIs from Non-Critical to Critical section since the action recognition would entail a 2 second video segment computation. 
+REVA is dynamically capable of changing the refresh value of an RoI, by simply modifying the refresh period in the corresponding RAT entry, thus avoiding any additional writes that would be needed to re-write the RoI into a frequently refreshed memory. In contrast, Flikker places all the frames in a low refresh window. While the accuracy of tasks like object recognition are relatively unaffected by this, tasks like action recognition require a high degree of accuracy while recording frame-to-frame differences. 
 This limits the range of tasks supported by Flikker. As a result, the expected gains from REVA's finer grained approach are feasible for a larger set of tasks, with the power savings always at least as much as Flikker.
 The maximum possible improvement would occur when we turn refresh completely off. On account of 88\% of the refresh power being eliminated, our scheme is able to achieve within 94\% of this maximum power saving, without compromising on the accuracy that would result in a refresh-less architecture. With the fraction of total power due to refresh continuing to increase with subsequent generations, the savings from REVA are expected to grow as well.
 
+%\begin{figure}[ht!]
+%\centering
+%\epsfig{file=figs/DRAMPower_Improvement_8GB_2.eps, angle=0, height=0.5\linewidth, width=0.9\linewidth, clip=true trim=}
+%\caption{\label{fig:PowerResults} Power comparisons for different schemes.}
+%\vspace{-0.2in}
+%\end{figure}
+
 \begin{figure}[ht!]
+\begin{minipage}[t]{0.48\linewidth}
 \centering
-\epsfig{file=figs/DRAMPower_Improvement_8GB_camready.eps, angle=0, height=0.4\linewidth, width=0.8\linewidth, clip=true trim=}
+\epsfig{file=figs/DRAMPower_Improvement_8GB_camready.eps, angle=0, width=1\linewidth, clip=true trim=}
 \caption{\label{fig:PowerResults} Power comparisons for different schemes.}
+\end{minipage}
+\hspace{0.1in}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\epsfig{file=figs/ActionRecognitionAnalysis_camready.eps, angle=0, width=1\linewidth, clip=}
+\caption{\label{fig:ActionRecognition} Accuracy results for different video segment lengths and fractions of overlap between segments.}
+\end{minipage}
 \vspace{-0.2in}
 \end{figure}
 
 \subsection{Sensitivity Analysis}
-While it can be argued that in a purely streaming embedded system, one can completely turn off refresh, we provide a compelling reason to have a variable dynamic refresh mechanism in place. There can be instances when a burst of RoIs are generated and the object recognition accelerator cannot sustain a high throughput of generating class labels. RoIs need to be buffered in the DRAM for processing at a later stage. Similarly, an object classified by HMAX may need to be evaluated further by SIFT for object matching or sub-class recognition. Lastly in a multi-object scenario, if a person's action is being recognized, another classified person's actions need to be buffered so as to process at a later stage. As shown in Figure~\ref{fig:ActionRecognition}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10\%).  
+While it can be argued that in a purely streaming embedded system, one can completely turn off refresh, we provide a compelling reason to have a variable dynamic refresh mechanism in place. There can be instances when a burst of RoIs are generated and the HMAX accelerator cannot sustain a high throughput of generating class labels. RoIs need to be buffered in the DRAM for processing at a later stage. Similarly, an object classified by HMAX may need to be evaluated further by SIFT for object matching. Lastly in a multi-object scenario, if a person's action is being recognized, another person's actions need to be buffered so as to process at a later stage. As shown in Figure~\ref{fig:ActionRecognition}, we evaluated different configurations of action recognition on the Weizmann dataset~\cite{Weizmann}. The results indicate that a purely streaming (no overlap of video segments) configuration affects accuracy considerably (by approximately 10\%).  
 
-\begin{figure}[ht!]
-\centering
-\epsfig{file=figs/ActionRecognitionAnalysis_camready.eps, angle=0, height=0.4\linewidth, width=0.85\linewidth, clip=}
-\caption{\label{fig:ActionRecognition} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
-\vspace{-0.2in}
-\end{figure}
+%\begin{figure}[ht!]
+%\centering
+%\epsfig{file=figs/ActionRecognitionAnalysis.eps, angle=0, width=0.85\linewidth, clip=}
+%\caption{\label{fig:ActionRecognition} Accuracy results for different configurations of video segment length and fraction of overlap between segments.}
+%\vspace{-0.2in}
+%\end{figure}
 
 
