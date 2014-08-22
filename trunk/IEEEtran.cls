@@ -3469,7 +3469,7 @@ between column types.}%
    \hfill\@IEEEcompsocdiamondline\hfill\hbox{}\par}}}\relax
 \else% not a technote
    \vskip0.2em{\Huge\@IEEEcompsoconly{\sffamily}\@IEEEcompsocconfonly{\normalfont\normalsize\vskip 2\@IEEEnormalsizeunitybaselineskip
-   \bfseries\Large}\@title\par}\vskip1.0em\par%
+   \bfseries\large}\@title\par}\vskip1.0em\par%
    % V1.6 handle \author differently if in conference mode
    \ifCLASSOPTIONconference%
       {\@IEEEspecialpapernotice\mbox{}\vskip\@IEEEauthorblockconfadjspace%
@@ -3560,7 +3560,7 @@ between column types.}%
 
 % peerreview formats the repeated title like the title in journal papers.
 \def\@IEEEpeerreviewmaketitle{\begin{center}\@IEEEcompsoconly{\sffamily}%
-\normalfont\normalsize\vskip0.2em{\Huge\@title\par}\vskip1.0em\par
+\normalfont\normalsize\vskip0.2em{\large\@title\par}\vskip1.0em\par
 \end{center}}
 
 
