@@ -1,5 +1,5 @@
 
-Due to the capacity of human vision systems for highly complex processing at very low power, there is growing interest in emulating such systems for video analytics applications.
+Due to the capacity of human vision systems for highly complex processing at very low power, there is a growing interest in emulating such systems for video analytics applications.
 Deriving inspiration from the energy-efficiency of the visual cortex, many brain-inspired algorithms and architectures have been proposed for this purpose~\cite{Nere2011,Chen2014,Kestur2012}. %[YiranChen UPitt, Qingriu Syracuse, NEC CNN]. 
 
 %In order to achieve fast and energy efficient implementations of these algorithms, it has been found general-purpose processors are inadequate, even with highly tuned software optimizations. Consequently, a host of application-specific accelerators are employed, allied with a general purpose core for other tasks such as synchronization and co-ordination between the individual specialized computation engines. 
@@ -15,8 +15,10 @@ Tuning DRAM refresh based on the data characteristics has been proposed as early
 In this work, we focus on the unique opportunities provided by real-time embedded video analytics applications for reducing the memory refresh energy. The analysis is based on an real-time image detection and recognition system that has been emulated on a FPGA based platform. This system detects objects of interest using an attention algorithm and then the object can be picked up from a subsequent frame where it is recognized to be of a particular class. The recognized object can be further passed to a next level for more detailed recognition. This system can be useful in a range of end applications such as unmanned air-vehicles, security cameras, visual-aids for visually-impaired and automatic weapon systems. We thus make the following contributions with regard to reducing the memory refresh energy based of this video analytics application.
 
 \begin{itemize}[leftmargin=*]
-\item We dynamically estimate the useful lifetime of buffered salient image data for further temporal analysis. When salient portions of the image are classified by the recognition engine based on the resulting class and the visual task to an accomplished by the vision system, the lifetime of the salient portion can be estimated. 
-\item We automatically recognize portions of an image as critical based on the saliency-recognition algorithms.
+\item We recognize that in streaming data, the lifetime of some parts of the data are significantly less than the refresh periods of a DRAM. Therefore, we completely disable refresh in these parts of the memory. 
+%This is an enhancement to current techniques that reduce refresh times instead of completely shutting off the refresh in non-critical portions of the data. 
+%We are also able to eliminate refresh for portions of the memory that are guaranteed to be accessed within a specific time period due to the application specific nature of the embedded video system.
+\item We automatically recognize portions of an image as critical based on the saliency-recognition algorithms employed in brain-inspired vision algorithms and selectively refresh portions of data.
  %This is in contrast to prior efforts that have focused on static methods such as manual annotations of critical and non-critical regions. 
 %For example~\cite{Liu2011} annotates the code and certain data structures such as pointers to list of frames as critical while considering the image data itself as non-critical. This approach limits the granularity of such annotations, especially when such criticality is data-driven. 
 In contrast, to~\cite{Liu2011} which statically annotates portions of the code and partitions them into critical and non-critical regions, our automated system can exploit both data dependent and task dependent information to identify salient regions within a single image frame. 
