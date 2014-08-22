@@ -4,7 +4,7 @@ Most works in this domain have focused mainly on enhancing the performance and e
 Tuning DRAM refresh based on the data characteristics has been proposed as early as 1998~\cite{islped98}. Recently, a software approach, termed as \emph{Flikker} was proposed that relies on the user to annotate critical and non-critical parts~\cite{Liu2011}. It also allows refresh rates to be different for critical and non-critical sections of the memory and conserve the refresh energy. 
 
 In this work, we focus on the unique opportunities provided by real-time embedded video analytics applications for reducing memory refresh energy. The analysis is based on a real-time image detection and recognition system that has been emulated on an FPGA based platform. This system detects objects of interest using an attention algorithm, which can then be picked up from subsequent frames and classified. This system is useful in a range of end applications such as unmanned air-vehicles, security cameras and aids for the visually-impaired. We make the following contributions with regard to reducing the memory refresh energy.
-
+\vspace{-0.1in}
 \begin{itemize}[leftmargin=*]
 \item We recognize that in streaming data, the lifetime of some parts of the data are significantly less than the refresh periods of a DRAM and disable refresh in these parts of the memory. 
 %This is an enhancement to current techniques that reduce refresh times instead of completely shutting off the refresh in non-critical portions of the data. 
@@ -17,6 +17,7 @@ In contrast, to~\cite{Liu2011} which statically annotates portions of the code a
 %The salient features are determined by a combination of the low-level features of the stimuli as well as the feedback from the visual task being performed by the person. 
 \item In embedded systems, the lifetimes of streaming data are significantly less than the refresh periods of a DRAM. This enables us to disable refresh in these parts of the memory and eliminate refresh for portions that are guaranteed to be accessed within a specific time period. We propose the underlying architecture to support such a visual pipeline with an optimized memory sub-system.
 \end{itemize}
+\vspace{-0.3cm}
 %The rest of this paper is organized as follows.
 %In Section~\ref{sec:background}, we provide an overview of the vision-based system and the accelerators that are employed in it. We also describe the memory hierarchy used in our system and the possible scope for improving the %performance and power efficiency.
 %Section~\ref{sec:architecture} describes our proposed architecture design and highlights the additions over a baseline system.
